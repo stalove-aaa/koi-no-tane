@@ -118,6 +118,8 @@
   /* 承認前のプレースホルダー見た目（本番コードを入れたら中身が置き換わる） */
   .ad-placeholder{width:100%;height:100%;min-height:inherit;background:repeating-linear-gradient(45deg,#fdf2f8,#fdf2f8 10px,#fce7f3 10px,#fce7f3 20px);border:1px dashed rgba(236,111,166,0.35);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--text-muted);font-size:11px;letter-spacing:0.15em;}
   .ad-placeholder .ad-label{font-size:10px;opacity:0.7;}
+  /* AdSense承認までは広告枠を非表示に。承認後は下のdisplay:none行を消す（または各枠にユニットコードを貼る） */
+  .ad-slot{display:none !important;}
   /* 本番では .ad-placeholder を消すと広告だけになる */
 
   /* みくじ箱 */
@@ -703,7 +705,7 @@ function onBoxTap(){
   document.getElementById('drawSubText').textContent='';
   // カウントダウン開始（10秒）
   document.getElementById('countRing').style.display='block';
-  document.getElementById('adWait').style.display='flex'; // 待ち時間の広告を表示
+  document.getElementById('adWait').style.display=''; // 広告枠（CSSで非表示中。承認後にCSSのdisplay:none解除で表示）
   let count=10;
   const fg=document.getElementById('countFg'),num=document.getElementById('countNum');
   const circ=176;
